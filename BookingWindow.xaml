@@ -1,0 +1,34 @@
+﻿<Window x:Class="EmployeeWpfApp.BookingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeWpfApp"
+        mc:Ignorable="d"
+        Title="BookingWindow" Height="300" Width="300">
+    <Grid>
+        <Label Content="Edit booking" HorizontalAlignment="Left" Margin="52,10,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="22"/>
+        <Label Content="Booking id" HorizontalAlignment="Left" Margin="25,55,0,0" VerticalAlignment="Top"/>
+        <Label Content="Start period" HorizontalAlignment="Left" Margin="25,86,0,0" VerticalAlignment="Top"/>
+        <Label Content="End period" HorizontalAlignment="Left" Margin="25,117,0,0" VerticalAlignment="Top"/>
+        <Label Content="Status" HorizontalAlignment="Left" Margin="25,148,0,0" VerticalAlignment="Top"/>
+        <Label Content="Tool" HorizontalAlignment="Left" Margin="25,178,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="BookingIDTB" HorizontalAlignment="Left" Height="23" Margin="125,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding BookingId, Mode=TwoWay}"/>
+        <DatePicker x:Name="StartDateDP" HorizontalAlignment="Left" Margin="125,86,0,0" VerticalAlignment="Top" Width="120" SelectedDate="{Binding StartPeriod, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+        <DatePicker x:Name="EndDateDP" HorizontalAlignment="Left" Margin="125,119,0,0" VerticalAlignment="Top" Width="120" SelectedDate="{Binding EndPeriod, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+        <ComboBox x:Name="StatusCB" HorizontalAlignment="Left" Margin="125,151,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Status, Mode=TwoWay}">
+            <ComboBoxItem x:Name="CBIReserved" Content="Reserved" IsSelected="False"/>
+            <ComboBoxItem x:Name="CBIHandedOver" Content="Handed over" IsSelected="False"/>
+            <ComboBoxItem x:Name="CBIReturned" Content="Returned" IsSelected="False"/>
+        </ComboBox>
+        <ComboBox x:Name="ToolCB" HorizontalAlignment="Left" Margin="125,181,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Tool, Mode=TwoWay}">
+            <ComboBoxItem x:Name="CBIHavetromler" Content="Havetromler" IsSelected="False"/>
+            <ComboBoxItem x:Name="CBIKompostkværn" Content="Kompostkværn" IsSelected="False"/>
+            <ComboBoxItem x:Name="CBIVinkelsliber" Content="Vinkelsliber" IsSelected="False"/>
+            <ComboBoxItem x:Name="CBIGulvslibemaskine" Content="Gulvslibemaskine" IsSelected="False"/>
+            <ComboBoxItem x:Name="CBIMotorsav" Content="Motorsav" IsSelected="False"/>
+        </ComboBox>
+        <Button Content="Ok" HorizontalAlignment="Left" Margin="125,232,0,0" VerticalAlignment="Top" Width="120" Height="21" Click="OkButton_Click"/>
+
+    </Grid>
+</Window>

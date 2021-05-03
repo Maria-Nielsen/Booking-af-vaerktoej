@@ -1,0 +1,53 @@
+﻿<Window x:Class="EmployeeWpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeWpfApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="850" Loaded="Window_Loaded">
+
+
+    <Grid Margin="0,0,-6.4,-19.6">
+        <DataGrid x:Name="customerDG" ItemsSource="{Binding}" AutoGenerateColumns="false" SelectionMode="Single" HorizontalAlignment="Left" Height="168" Margin="10,38,0,0" VerticalAlignment="Top" Width="469" SelectionChanged="CustomerSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Bookings:" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <DataGrid x:Name="bookingsDG" AutoGenerateColumns="false" HorizontalAlignment="Left" Height="191" Margin="10,252,0,0" VerticalAlignment="Top" Width="469" SelectionChanged="BookingSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding BookingId}" Width="*"/>
+                <DataGridTextColumn x:Name="StartPeriodDGTC" Header="Start period" Binding="{Binding StartPeriod}" Width="2*"/>
+                <DataGridTextColumn Header="End period" Binding="{Binding EndPeriod}" Width="2*"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Customers:" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Margin="10,9,0,0"/>
+        <Label Content="Tool                :" HorizontalAlignment="Left" Margin="495,312,0,0" VerticalAlignment="Top"/>
+        <Label Content="Description    :" HorizontalAlignment="Left" Margin="495,338,0,0" VerticalAlignment="Top"/>
+        <Label Content="Deposit          :" HorizontalAlignment="Left" Margin="495,364,0,0" VerticalAlignment="Top"/>
+        <Label Content="DailyPrice       :" HorizontalAlignment="Left" Margin="495,390,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTool" Content="" HorizontalAlignment="Left" Margin="608,312,0,0" VerticalAlignment="Top" Height="26" />
+        <Label x:Name="lblDescription" Content="" HorizontalAlignment="Left" Margin="608,338,0,0" VerticalAlignment="Top" />
+        <Label x:Name="lblDeposit" Content="" HorizontalAlignment="Left" Margin="608,364,0,0" VerticalAlignment="Top" />
+        <Label x:Name="lblDailyPrice" Content="" HorizontalAlignment="Left" Margin="608,390,0,0" VerticalAlignment="Top" />
+        <ComboBox x:Name="CBStatus" ItemsSource="{Binding Status}" HorizontalAlignment="Left" Margin="498,421,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CBStatus_SelectionChanged">
+            <ComboBoxItem x:Name="CBIReserved" Content="Reserved" IsSelected="False" />
+            <ComboBoxItem x:Name="CBIHandedOver" Content="Handed over" IsSelected="False" />
+            <ComboBoxItem x:Name="CBIReturned" Content="Returned" IsSelected="False" />
+        </ComboBox>
+        <TextBox x:Name="SearchTB" HorizontalAlignment="Left" Height="23" Margin="359,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="SearchCustomer" />
+        <Image Source="/search-icon-png-4.png" Height="21" Margin="454,17,370.6,502.4" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.462,0.496" OpacityMask="Black" Width="25"/>
+        <Button Content="Delete booking" HorizontalAlignment="Left" Margin="10,448,0,0" VerticalAlignment="Top" Width="96" Height="26" Click="DeleteBooking_Clicked"/>
+        <ComboBox x:Name="BookingStatusSortingCB" HorizontalAlignment="Left" Margin="359,225,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="BookingStatusSorting_Changed">
+            <ComboBoxItem Name="AllStatusCBSort" Content="All" IsSelected="True"/>
+            <ComboBoxItem Name="ReservedStatusCBSort" Content="Reserved" IsSelected="False"/>
+            <ComboBoxItem Name="HandedOverStatusCBSort" Content="Handed over" IsSelected="False"/>
+            <ComboBoxItem Name="ReturnedStatusCBSort" Content="Returned" IsSelected="False"/>
+        </ComboBox>
+        <Button Content="Edit booking" HorizontalAlignment="Left" Margin="111,448,0,0" VerticalAlignment="Top" Width="106" Height="26" IsCancel="True" Click="Edit_Booking_Click"/>
+    </Grid>
+</Window>
